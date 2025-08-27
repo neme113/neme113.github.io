@@ -3,37 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fullscreen Video</title>
+  <title>Dark Mode Website</title>
   <style>
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #121212; /* Dark background */
+      color: #ffffff;
+      font-family: Arial, sans-serif;
     }
 
-    body, html {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
+    button {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: 2px solid #444;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    video {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
+    button:hover {
+      background-color: #333333;
+      border-color: #888;
     }
   </style>
 </head>
 <body>
-  <video autoplay loop playsinline>
-    <source src="Peachy Luigi!  Crazy Funny Songs and Music.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
+  <button onclick="location.href='page1.html'">Page 1</button>
+  <button onclick="location.href='page2.html'">Page 2</button>
 </body>
 </html>
