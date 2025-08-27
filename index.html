@@ -3,90 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Activity Website</title>
+  <title>Fullscreen Video</title>
   <style>
-    body {
+    body, html {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      background: #121212;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-    header {
-      margin: 20px;
-    }
-    .btn {
-      background: #1e1e1e;
-      border: 2px solid #444;
-      color: #fff;
-      padding: 12px 24px;
-      margin: 5px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #333;
-      border-color: #888;
-    }
-    .page {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      width: 100%;
-      max-width: 800px;
-    }
-    .active {
-      display: block;
+      height: 100%;
+      overflow: hidden;
     }
     video {
-      max-width: 100%;
-      border-radius: 12px;
-      margin-top: 20px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation buttons -->
-  <header>
-    <button class="btn" onclick="showPage('home')">Home</button>
-    <button class="btn" onclick="showPage('kiwi')">Kiwi Waluigi</button>
-    <button class="btn" onclick="showPage('peachy')">Peachy Luigi</button>
-  </header>
+  <!-- URL-encode spaces (%20) and ! (%21) -->
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="Peachy%20Luigi%21%20%20Crazy%20Funny%20Songs%20and%20Music.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
 
-  <!-- Pages -->
-  <div id="home" class="page active">
-    <h1>Welcome!</h1>
-    <p>Select one of the pages above to view content.</p>
-  </div>
-
-  <div id="kiwi" class="page">
-    <h1>Kiwi Waluigi</h1>
-    <p>This is the Kiwi Waluigi page.</p>
-    <!-- Embed your video file -->
-    <video loop>
-      <source src="Kiwiwaluigi! Crazy Funny Songs and Music.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-
-  <div id="peachy" class="page">
-    <h1>Peachy Luigi</h1>
-    <p>This is the Peachy Luigi page.</p>
-    <!-- Embed your video file -->
-      <source src="Peachy Luigi! Crazy Funny Songs and Music.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  <button onclick="unmute()">🔊 Unmute (Quiet)</button>
 
   <script>
-    function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    const vid = document.getElementById("bgVideo");
+
+    function unmute() {
+      vid.muted = false;
+      vid.volume = 0.2; // 20% volume
+      vid.play();
     }
   </script>
 </body>
